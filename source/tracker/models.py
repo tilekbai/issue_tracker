@@ -14,7 +14,7 @@ class Issue(BaseModel):
     summary = models.CharField(max_length = 60, null = False, blank = False, verbose_name = "Заголовок")
     description = models.CharField(max_length = 2000, null = True, blank=True, verbose_name = "Описание")
     status = models.ForeignKey("tracker.Status", on_delete=models.PROTECT, related_name="status", verbose_name="Статус")
-    issue_type = models.ForeignKey("models.Issue_type", on_delete=models.PROTECT, related_name="issue_type", verbose_name="Тип_задачи")
+    issue_type = models.ForeignKey("tracker.Issue_type", on_delete=models.PROTECT, related_name="issue_type", verbose_name="Тип_задачи")
 
     class Meta:
         db_table = "issues"

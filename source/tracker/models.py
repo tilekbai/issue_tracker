@@ -26,7 +26,7 @@ class Issue(BaseModel):
 
 
 class Status(models.Model):
-    status = models.CharField(max_length=20, null=False, blank=False)
+    status_code = models.CharField(max_length=20, null=False, blank=False)
 
     class Meta:
         db_table = "statuses"
@@ -34,11 +34,11 @@ class Status(models.Model):
         verbose_name_plural = "Статусы"
 
     def __str__(self):
-        return f'{self.id}: {self.status}'
+        return f'{self.id}: {self.status_code}'
 
 
 class Issue_type(models.Model):
-    issue_pype = models.CharField(max_length=20, null=False, blank=False)
+    issue_type_code = models.CharField(max_length=20, null=False, blank=False)
 
     class Meta:
         db_table = "issue_types"
@@ -46,6 +46,6 @@ class Issue_type(models.Model):
         verbose_name_plural = "Типы"
 
     def __str__(self):
-        return f'{self.id}: {self.issue_type}'     
+        return f'{self.id}: {self.issue_type_code}'     
 
 

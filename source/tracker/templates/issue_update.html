@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block menu %}<li><a href="{% url 'issue-view' issue.id %}">Вернуться к задаче</a></li>{% endblock menu %}
+{% block page_header %}Редактирвоать задачу {{ issue.id }}{% endblock page_header %}
+
+{% block content %}
+    <form action="{% url 'issue-update' issue.id %}" method="post">
+        {% include "issue_form.html" with button_text="Редактировать задачу" %}
+    </form>
+{% endblock content %}

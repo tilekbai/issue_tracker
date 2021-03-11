@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block page_header %}Добавить задачу{% endblock page_header %}
+
+{% block content %}
+    <form action="/issues/add/" method="post">
+        {% include "issue_form.html" with button_text="Создать задачу" %}
+    </form>
+{% endblock content %}

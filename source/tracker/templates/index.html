@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block menu %}<li><a href="{% url 'issue-add' %}">Создать задачу</a></li>{% endblock menu %}
+
+{% block title %}Все задачи{% endblock title %}
+
+{% block page_header %}Все задачи{% endblock page_header %}
+
+{% block content %}
+    {% if not issues %}
+        <h2>НЕТ ЗАДАЧ</h2>
+    {% endif %}
+
+    {% for issue in issues %}
+        <p>{{ issue.author }}: <a href="{% url 'issue-view' issue.id %}">{{ issue.title }}</a></p>
+    {% endfor %}
+{% endblock content %}

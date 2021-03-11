@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <li><a href="{% url 'issue-add' %}">Создать задачу</a></li>
+    <li><a href="{% url 'issue-update' issue.id %}">Редактировать задачу</a></li>
+    <li><a href="{% url 'issue-delete' issue.id %}">Удалить задачу</a></li>
+{% endblock menu %}
+
+{% block page_header %}Статья {{ issue.id }}{% endblock page_header %}
+
+{% block content %}
+    <p>Title: {{ issue.title }}</p>
+    <p>Author: {{ issue.author }}</p>
+    <p>Content: {{ issue.content }}</p>
+{% endblock content %}

@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tracker.views import(IndexView)
+from tracker.views import IndexView, IssueView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view(), name='issue-list'),
+    path('', IndexView.as_view(), name="issue-list"),
+    path('<int:pk>/', IssueView.as_view(), name= "issue-view"),
 ]

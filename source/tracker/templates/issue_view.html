@@ -1,15 +1,16 @@
-{% extends "base.html" %}
-
-{% block menu %}
-    <li><a href="{% url 'issue-add' %}">Создать задачу</a></li>
-    <li><a href="{% url 'issue-update' issue.id %}">Редактировать задачу</a></li>
-    <li><a href="{% url 'issue-delete' issue.id %}">Удалить задачу</a></li>
-{% endblock menu %}
-
-{% block page_header %}Статья {{ issue.id }}{% endblock page_header %}
-
-{% block content %}
-    <p>Title: {{ issue.title }}</p>
-    <p>Author: {{ issue.author }}</p>
-    <p>Content: {{ issue.content }}</p>
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Задача {{ issue.id }}</h1>
+    <p>{{ issue.summary }}: {{ issue.description }}
+    </p>
+    <p>{{ issue.status }}</p>
+    <p>{{ issue.issue_type }}</p>
+</body>
+</html>

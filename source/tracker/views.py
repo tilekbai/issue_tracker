@@ -68,3 +68,20 @@ def issue_update_view(request, pk):
 
         return render(request, 'issue_update.html', context={'form': form, 'issue': issue}) 
         
+
+def issue_delete_view(request, pk):
+    issue = get_object_or_404(Issue, id=pk)
+    if request.method == 'GET':
+        form = IssueDeleteForm()
+        return render(request, 'issue_delete.html', context={'issue': issue, 'form': form})
+    elif request.method == 'POST':
+        form = IssueDeleteForm(data=request.POST)
+        if form.is_valid():
+            if form.cleaned_data['summary'] != issue.summary:
+                form.errors['summary'] = ['Названия задач не совпадают']
+                return render(request, 'issue_delete.html', context={'issue': issue, 'form': form})
+
+            issue.delete()
+            return redirect('issue-list')
+        return render(request, 'issue_delete.html', context={'issue': issue, 'form': form})
+

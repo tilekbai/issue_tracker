@@ -24,7 +24,7 @@ class IssueView(TemplateView):
 
 def issue_create_view(request):
     
-    
+
     if request.method == "GET":
         
         form = IssueForm()
@@ -42,4 +42,29 @@ def issue_create_view(request):
             return redirect('issue-view', pk=issue.id)
             
         return render(request, 'issue_create.html', context={'form': form})
+
+
+def issue_update_view(request, pk):
+    
+    issue = get_object_or_404(Issue, id=pk)
+
+    if request.method == 'GET':
+        form = IssueForm(initial={  
+            'summary': issue.summary,
+            'description': issue.description,
+            'status': issue.status,
+            'issue_type': issue.issue_type
+        })
+        return render(request, 'issue_update.html', context={'form': form, 'issue': issue})
+    elif request.method == 'POST':
+        form = IssueForm(data=request.POST) 
+        if form.is_valid(): 
+            issue.summary = form.cleaned_data.get("summary")
+            issue.description = form.cleaned_data.get("description")
+            issue.status = form.cleaned_data.get("status")
+            issue.issue_type = form.cleaned_data.get("issue_type")
+            issue.save()
+            return redirect('issue-view', pk=issue.id)
+
+        return render(request, 'issue_update.html', context={'form': form, 'issue': issue}) 
         

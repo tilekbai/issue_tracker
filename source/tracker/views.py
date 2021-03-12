@@ -4,16 +4,17 @@ from tracker.models import Issue
 
 # Create your views here.
 
-class IndexView(View):
+class IndexView(TemplateView):
+    template_name = "index.html"
 
-    def get(self, request, *args, **kwargs):
-        issues = Issue.objects.all()
-        return render(request, "index.html", context={'issues': issues})
+    def get_context_data(self, **kwargs):
+        kwargs['issues'] = Issue.objects.all()
+        return super().get_context_data(**kwargs)
+        
 
 class IssueView(TemplateView):
     template_name = "issue_view.html"
     
     def get_context_data(self, **kwargs):
-        print(kwargs)
         kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
         return super().get_context_data(**kwargs)

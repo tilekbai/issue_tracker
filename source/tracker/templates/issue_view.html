@@ -8,9 +8,11 @@
 </head>
 <body>
     <h1>Задача {{ issue.id }}</h1>
-    <p>{{ issue.summary }}: {{ issue.description }}
-    </p>
-    <p>{{ issue.status }}</p>
-    <p>{{ issue.issue_type }}</p>
+    <p>Задача: {{ issue.summary }}</p>
+    <p>Описание: {{ issue.description }}</p>
+    <p>Статус: {{ issue.status }}</p>
+    <p>Тип: {{ issue.issue_type }}</p>
+    <p>Время создания: {{ issue.created_at }}</p>
+    <p>Время обновления: {{ issue.updated_at }}</p>
 </body>
-</html>
+</html> 

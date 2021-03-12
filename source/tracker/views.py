@@ -22,15 +22,13 @@ class IssueView(TemplateView):
         return super().get_context_data(**kwargs)
 
 
-def issue_create_view(request):
-    
-
-    if request.method == "GET":
-        
+class Issue_createView(View):
+    def get(self, request, *args, **kwargs):
         form = IssueForm()
         return render(request, 'issue_create.html', context={'form': form})
-    elif request.method == "POST": 
-        
+
+
+    def post(self, request, *args, **kwargs):
         form = IssueForm(data=request.POST)
         if form.is_valid():
             issue = Issue.objects.create(
@@ -42,46 +40,47 @@ def issue_create_view(request):
             return redirect('issue-view', pk=issue.id)
             
         return render(request, 'issue_create.html', context={'form': form})
-
-
-def issue_update_view(request, pk):
     
-    issue = get_object_or_404(Issue, id=pk)
+class Issue_updateView(View):
 
-    if request.method == 'GET':
+    def get(self, request, *args, **kwargs):
+        kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
         form = IssueForm(initial={  
-            'summary': issue.summary,
-            'description': issue.description,
-            'status': issue.status,
-            'issue_type': issue.issue_type
+            'summary': kwargs ["issue"].summary,
+            'description': kwargs ["issue"].description,
+            'status': kwargs ["issue"].status,
+            'issue_type': kwargs ["issue"].issue_type
         })
-        return render(request, 'issue_update.html', context={'form': form, 'issue': issue})
-    elif request.method == 'POST':
+        return render(request, 'issue_update.html', context={'form': form, 'issue': kwargs ["issue"]})
+
+    def post(self, request, *args, **kwargs):
+        kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
         form = IssueForm(data=request.POST) 
         if form.is_valid(): 
-            issue.summary = form.cleaned_data.get("summary")
-            issue.description = form.cleaned_data.get("description")
-            issue.status = form.cleaned_data.get("status")
-            issue.issue_type = form.cleaned_data.get("issue_type")
-            issue.save()
-            return redirect('issue-view', pk=issue.id)
+            kwargs ["issue"].summary = form.cleaned_data.get("summary")
+            kwargs ["issue"].description = form.cleaned_data.get("description")
+            kwargs ["issue"].status = form.cleaned_data.get("status")
+            kwargs ["issue"].issue_type = form.cleaned_data.get("issue_type")
+            kwargs ["issue"].save()
+            return redirect('issue-view', pk=kwargs ["issue"].id)
 
-        return render(request, 'issue_update.html', context={'form': form, 'issue': issue}) 
-        
+        return render(request, 'issue_update.html', context={'form': form, 'issue': kwargs ["issue"]})
 
-def issue_delete_view(request, pk):
-    issue = get_object_or_404(Issue, id=pk)
-    if request.method == 'GET':
+
+class Issue_deleteView(View):
+    def get(self, request, *args, **kwargs):
+        kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
         form = IssueDeleteForm()
-        return render(request, 'issue_delete.html', context={'issue': issue, 'form': form})
-    elif request.method == 'POST':
+        return render(request, 'issue_delete.html', context={'issue': kwargs ["issue"], 'form': form})
+
+    def post(self, request, *args, **kwargs):
+        kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
         form = IssueDeleteForm(data=request.POST)
         if form.is_valid():
-            if form.cleaned_data['summary'] != issue.summary:
+            if form.cleaned_data['summary'] != kwargs ["issue"].summary:
                 form.errors['summary'] = ['Названия задач не совпадают']
-                return render(request, 'issue_delete.html', context={'issue': issue, 'form': form})
+                return render(request, 'issue_delete.html', context={'issue': kwargs ["issue"], 'form': form})
 
-            issue.delete()
+            kwargs ["issue"].delete()
             return redirect('issue-list')
-        return render(request, 'issue_delete.html', context={'issue': issue, 'form': form})
-
+        return render(request, 'issue_delete.html', context={'issue': kwargs ["issue"], 'form': form})

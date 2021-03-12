@@ -34,7 +34,7 @@ class Status(models.Model):
         verbose_name_plural = "Статусы"
 
     def __str__(self):
-        return f'{self.id}: {self.status_code}'
+        return f'{self.status_code}'
 
 
 class Issue_type(models.Model):
@@ -46,6 +46,6 @@ class Issue_type(models.Model):
         verbose_name_plural = "Типы"
 
     def __str__(self):
-        return f'{self.id}: {self.issue_type_code}'     
+        return f'{self.issue_type_code}'     
 
 

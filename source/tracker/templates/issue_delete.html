@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends "base.html" %}
+{% block title %}Удаление задачи{% endblock title %}
 <body>
+    {% block page_header %}Удаление задачи{% endblock page_header %}
+    {% block content %}
     <form action="{% url 'issue-delete' issue.id %}", method="POST">
         {% include 'issue_form.html' with button_text="Да, я хочу удалить задачу" %}
         <a href="{% url 'issue-view' issue.id %}">Отмена. Код красный. КОД КРАСНЫЙ!!</a>
     </form>
+    {% endblock content %}    
 </body>
 </html>

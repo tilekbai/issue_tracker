@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+{% extends "base.html" %}
+{% block title %}Все задачи{% endblock title %}
 <body>
+    
+    {% block menu %}
+    <li><a href="{% url 'issue-add' %}">Добавить задачу</a></li>
+    {% endblock %}
+        
     <div>
         <h1>Задачи</h1>
+        {% block content %}
         <p>Список задач</p>
         {% for issue in issues %} 
-                <p>{{ issue }}</p>
+                <p>Название: {{ issue.summary }}.<br>Статус: {{ issue.status }}. Тип: {{ issue.issue_type }}<br><a href="{% url 'issue-delete' issue.id %}">Удалить задачу</a> <a href="{% url 'issue-update' issue.id %}">Изменить задачу</a> <a href="{% url 'issue-view' issue.id %}">Посмотреть задачу</a></p>
         {% endfor %}
+        {% endblock content %}
     </div>
     
 </body>

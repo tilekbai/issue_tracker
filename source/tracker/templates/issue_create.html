@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends "base.html" %}
+{% block title %}Добавление задачи{% endblock title %}
 <body>
-    <h1>Удаление задачи</h1>
+    {% block page_header %}    
+    <h1>Создание задачи</h1>
+    {% endblock page_header %}
+    {% block content %}    
     <form action="/add/" method="post">
         {% include "issue_form.html" with button_text="Создать задачу" %}
     </form>
+    {% endblock content %}
 </body>
 </html>

@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends "base.html" %}
+{% block title %}Задача {{issue.id}}{% endblock title %}
 <body>
-    <h1>Задача {{ issue.id }}</h1>
+    {% block page_header %}Задача {{issue.id}}{% endblock page_header %}
+    {% block content %}
     <p>Задача: {{ issue.summary }}</p>
     <p>Описание: {{ issue.description }}</p>
     <p>Статус: {{ issue.status }}</p>
     <p>Тип: {{ issue.issue_type }}</p>
     <p>Время создания: {{ issue.created_at }}</p>
     <p>Время обновления: {{ issue.updated_at }}</p>
+    {% endblock content %}
 </body>
 </html> 

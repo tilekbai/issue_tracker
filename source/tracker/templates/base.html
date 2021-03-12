@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 </head>
 <body>
-
+    <nav class="navbar">
+        <ul class="menu">
+            <li><a href="{% url "issue-list" %}">Все задачи</a></li>
+            {% block menu %}{% endblock %}
+        </ul>
+    </nav>
     <div class="container">
         <h1>{% block page_header %}Задачи{% endblock page_header %}</h1>
         {% block content %}{% endblock content %}

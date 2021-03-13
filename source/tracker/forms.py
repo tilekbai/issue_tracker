@@ -1,14 +1,12 @@
 from django import forms
 
-from tracker.models import Issue
+from tracker.models import Issue, Status, Issue_type
 
 
 class IssueForm(forms.ModelForm):
     class Meta:
         model = Issue
         fields = ('summary', 'description', 'status', 'issue_type')
-
-
 
 
 class IssueDeleteForm(forms.Form):

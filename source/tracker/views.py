@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import View, TemplateView, RedirectView
+from tracker.base_view import CustomFormView
 
-from tracker.models import Issue
+from tracker.models import Issue, Status, Issue_type
 from tracker.forms import IssueForm, IssueDeleteForm
 
 # Create your views here.
@@ -22,25 +23,45 @@ class IssueView(TemplateView):
         return super().get_context_data(**kwargs)
 
 
-class Issue_createView(View):
-    def get(self, request, *args, **kwargs):
-        form = IssueForm()
-        return render(request, 'issue_create.html', context={'form': form})
+# class Issue_createView(View):
+#     def get(self, request, *args, **kwargs):
+#         form = IssueForm()
+#         return render(request, 'issue_create.html', context={'form': form})
 
 
-    def post(self, request, *args, **kwargs):
-        form = IssueForm(data=request.POST)
-        if form.is_valid():
-            issue = Issue.objects.create(
-                summary=form.cleaned_data.get('summary'),
-                description=form.cleaned_data.get('description'),
-                status=form.cleaned_data.get('status'),
-                issue_type=form.cleaned_data.get('issue_type')
-            )
-            return redirect('issue-view', pk=issue.id)
+#     def post(self, request, *args, **kwargs):
+#         form = IssueForm(data=request.POST)
+#         if form.is_valid():
+#             issue = Issue.objects.create(
+#                 summary=form.cleaned_data.get('summary'),
+#                 description=form.cleaned_data.get('description'),
+#                 status=form.cleaned_data.get('status'),
+#                 issue_type=form.cleaned_data.get('issue_type')
+#             )
+#             return redirect('issue-view', pk=issue.id)
             
-        return render(request, 'issue_create.html', context={'form': form})
-    
+#         return render(request, 'issue_create.html', context={'form': form})
+
+
+class Issue_createView(CustomFormView):
+    template_name = "issue_create.html"
+    form_class = IssueForm
+    redirect_url = "issue-list"
+
+    def form_valid(self, form):
+        issue_type = form.cleaned_data.pop("issue_type")
+        issue = Issue()
+        
+        for key, value in form.cleaned_data.items():
+            setattr(issue, key, value)
+        
+        issue.save()
+        issue.issue_type.set(issue_type)
+
+        return super().form_valid(form)
+
+
+
 class Issue_updateView(View):
 
     def get(self, request, *args, **kwargs):

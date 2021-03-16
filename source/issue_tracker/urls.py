@@ -20,6 +20,7 @@ from tracker.views import IndexView, IssueView, Issue_updateView, Issue_deleteVi
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name="issue-list"),
+    # path('add/', Issue_createView.as_view(), name="issue-add"),
     path('add/', Issue_createView.as_view(), name="issue-add"),
     path('<int:pk>/', IssueView.as_view(), name= "issue-view"),
     path('<int:pk>/update', Issue_updateView.as_view(), name="issue-update"),

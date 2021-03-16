@@ -5,8 +5,8 @@ from tracker.models import Issue, Status, Issue_type
 
 
 class IssueAdmin(admin.ModelAdmin):
-    list_display = ["id", "summary", "description", "status", "issue_type", "created_at", "updated_at"]
-    list_filter = ["id", "summary", "status", "issue_type"]
+    list_display = ["id", "summary", "description", "status", "created_at", "updated_at"]
+    list_filter = ["id", "summary", "status"]
     search_fields = ["description", "created_at", "updated_at"]
     fields = ["id", "summary", "description", "status", "issue_type", "created_at", "updated_at"]
     readonly_fields = ["created_at", "updated_at", "id"]

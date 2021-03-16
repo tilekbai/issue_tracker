@@ -1,1 +1,228 @@
-[{"model": "tracker.issue", "pk": 1, "fields": {"created_at": "2021-03-10T18:47:53.321Z", "updated_at": "2021-03-13T06:10:59.522Z", "summary": "Р¦РІРµС‚С‹ РЅР° 8 РјР°СЂС‚Р°!", "description": "РљСѓРїРёС‚СЊ С†РІРµС‚С‹ РЅР° РїСЂР°Р·РґРЅРёРє: 2 Р±СѓРєРµС‚Р° СЂР°Р·, 3 Р±СѓРєРµС‚Р° С‚СЋР»СЊРїР°РЅРѕРІ", "status": 3, "issue_type": 1}}, {"model": "tracker.issue", "pk": 2, "fields": {"created_at": "2021-03-10T18:51:09.790Z", "updated_at": "2021-03-10T18:51:09.790Z", "summary": "РџСЂР°РІРєР° РєРѕРґР° Python", "description": "РќР°Р№С‚Рё Рё СѓСЃС‚СЂР°РЅРёС‚СЊ РѕС€РёР±РєРё РІ РєРѕРґРµ: \"to_do_list\". РќРµ СЂР°Р±РѕС‚Р°РµС‚ РґРѕР±Р°РІР»РµРЅРёРµ Рё СѓРґР°Р»РµРЅРёРµ Р·Р°РґР°С‡", "status": 2, "issue_type": 2}}, {"model": "tracker.issue", "pk": 3, "fields": {"created_at": "2021-03-10T18:53:50.083Z", "updated_at": "2021-03-12T14:33:15.117Z", "summary": "РћР±РЅРѕРІР»РµРЅРёРµ РєРѕРјРїСЊСЋС‚РµСЂР°", "description": "РћР±РЅРѕРІРёС‚СЊ СЃРёСЃС‚РµРјСѓ, СѓР»СѓС‡С€РёС‚СЊ РіСЂР°С„РёС‡РµСЃРєРёР№ РёРЅС‚РµСЂС„РµР№СЃ РєРѕРјРїСЊСЋС‚РµСЂР°, РїСЂРѕРёР·РІРµСЃС‚Рё РЅР°СЃС‚СЂРѕР№РєРё С€СЂРёС„С‚РѕРІ, РїРµСЂСЃРѕРЅР°Р»РёР·Р°С†РёРё, СЂР°СЃРєР»Р°РґРєРё", "status": 3, "issue_type": 3}}, {"model": "tracker.issue", "pk": 4, "fields": {"created_at": "2021-03-10T18:55:26.507Z", "updated_at": "2021-03-10T18:55:26.507Z", "summary": "Р§РёС‚Р°С‚СЊ РєРЅРёРіРё", "description": "РџСЂРѕС‡РµСЃС‚СЊ РєРЅРёРіСѓ: \"Р‘РѕСЂСЊР±Р° Р·Р° РѕРіРѕРЅСЊ\"", "status": 3, "issue_type": 1}}, {"model": "tracker.issue", "pk": 7, "fields": {"created_at": "2021-03-10T19:01:03.234Z", "updated_at": "2021-03-12T18:02:33.106Z", "summary": "Р РµРјРѕРЅС‚ Р°РІС‚Рѕ", "description": "РћС‚РІРµР·С‚Рё РјР°С€РёРЅСѓ РЅР° СЂРµРјРѕРЅС‚. Р—Р°РјРµРЅР° РјР°СЃР»Р°, С„РёР»СЊС‚СЂРѕРІ, СЂРµРјРѕРЅС‚ С…РѕРґРѕРІРѕР№ С‡Р°СЃС‚Рё, РєРѕРјРїСЊСЋС‚РµСЂРЅР°СЏ РґРёР°РЅРѕСЃС‚РёРєР°", "status": 2, "issue_type": 2}}, {"model": "tracker.issue", "pk": 8, "fields": {"created_at": "2021-03-12T14:01:49.640Z", "updated_at": "2021-03-12T14:30:28.335Z", "summary": "РџРёРІРѕРІР°СЂРёС‚СЊ", "description": "РџРёРІРѕ РІР°СЂРёС‚ РРІР°РЅ РўР°СЂР°РЅС‹С‡. РќР°РґРѕ РїРѕРјРѕС‡СЊ", "status": 2, "issue_type": 2}}, {"model": "tracker.issue", "pk": 9, "fields": {"created_at": "2021-03-12T17:30:37.496Z", "updated_at": "2021-03-12T17:57:15.413Z", "summary": "РЎРІР°СЂРёС‚СЊ РєР°СЂС‚РѕС€РєСѓ РІ РјСѓРЅРґРёСЂРµ", "description": "Р’ 12:00 Р·Р°РєРёРЅСѓС‚СЊ 8 СЏРёС† РІ РєР°СЃС‚СЂСЋР»СЋ СЃ РІРѕРґРѕР№ Рё РїРѕСЃС‚Р°РІРёС‚СЊ РЅР° РіР°Р·РѕРІСѓСЋ РїР»РёС‚Сѓ. Р’Р°СЂРёС‚СЊ 15 РјРёРЅСѓС‚ РїРѕСЃР»Рµ РєРёРїСЏС‡РµРЅРёСЏ.", "status": 3, "issue_type": 1}}, {"model": "tracker.issue", "pk": 12, "fields": {"created_at": "2021-03-12T20:25:05.183Z", "updated_at": "2021-03-12T20:25:05.183Z", "summary": "РЎРєР°С‡Р°С‚СЊ РїРµСЃРЅРё РіСЂ.РљРёРЅРѕ", "description": "Р’.Р¦РѕР№. РіСЂ.РљРёРЅРѕ", "status": 2, "issue_type": 3}}, {"model": "tracker.issue", "pk": 13, "fields": {"created_at": "2021-03-12T20:28:15.626Z", "updated_at": "2021-03-12T20:28:15.626Z", "summary": "Р’СЃРєРѕРїР°С‚СЊ Р·РµРјР»СЋ", "description": null, "status": 1, "issue_type": 1}}, {"model": "tracker.issue", "pk": 14, "fields": {"created_at": "2021-03-13T05:15:47.678Z", "updated_at": "2021-03-13T05:15:47.678Z", "summary": "РЎРґРµР»Р°С‚СЊ Р·Р°СЂСЏРґРєСѓ", "description": "Р Р°Р·РјРёРЅРєР° 10 РјРёРЅСѓС‚. РћС‚Р¶РёРјР°РЅРёСЏ РѕС‚ РїРѕР»Р° 100 СЂР°Р·. РЎРєСЂСѓС‡РёРІР°РЅРёСЏ С‚СѓР»РѕРІРёС‰Р° РЅР° РїСЂРµСЃСЃ 50 СЂР°Р·. РџРѕРґС‚СЏРіРёРІР°РЅРёСЏ РЅР° РїРµСЂРµРєР»Р°РґРёРЅРµ 40 СЂР°Р·.", "status": 3, "issue_type": 3}}, {"model": "tracker.issue", "pk": 15, "fields": {"created_at": "2021-03-13T05:18:12.812Z", "updated_at": "2021-03-13T05:18:12.812Z", "summary": "РџРѕР»РёС‚СЊ РґРµСЂРµРІСЊСЏ", "description": "Р”РІР° РІРµРґСЂР° РЅР° РґРµСЂРµРІРѕ", "status": 2, "issue_type": 1}}, {"model": "tracker.status", "pk": 1, "fields": {"status_code": "New"}}, {"model": "tracker.status", "pk": 2, "fields": {"status_code": "In Progress"}}, {"model": "tracker.status", "pk": 3, "fields": {"status_code": "Done"}}, {"model": "tracker.issue_type", "pk": 1, "fields": {"issue_type_code": "Task"}}, {"model": "tracker.issue_type", "pk": 2, "fields": {"issue_type_code": "Bug"}}, {"model": "tracker.issue_type", "pk": 3, "fields": {"issue_type_code": "Enhancement"}}]
+[
+{
+  "model": "tracker.issue",
+  "pk": 1,
+  "fields": {
+    "created_at": "2021-03-10T18:47:53.321Z",
+    "updated_at": "2021-03-16T19:59:58.701Z",
+    "summary": "Цветы на 8 марта!!",
+    "description": "Купить цветы на праздник: 2 букета раз, 3 букета тюльпанов",
+    "status": 1,
+    "issue_type": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 2,
+  "fields": {
+    "created_at": "2021-03-10T18:51:09.790Z",
+    "updated_at": "2021-03-10T18:51:09.790Z",
+    "summary": "Правка кода Python",
+    "description": "Найти и устранить ошибки в коде: \"to_do_list\". Не работает добавление и удаление задач",
+    "status": 2,
+    "issue_type": []
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 3,
+  "fields": {
+    "created_at": "2021-03-10T18:53:50.083Z",
+    "updated_at": "2021-03-16T20:02:11.241Z",
+    "summary": "Обновление компьютера",
+    "description": "Обновить систему, улучшить графический интерфейс компьютера, произвести настройки шрифтов, персонализации, раскладки",
+    "status": 3,
+    "issue_type": [
+      1
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 4,
+  "fields": {
+    "created_at": "2021-03-10T18:55:26.507Z",
+    "updated_at": "2021-03-16T20:02:02.724Z",
+    "summary": "Читать книги",
+    "description": "Прочесть книгу: \"Борьба за огонь\"",
+    "status": 3,
+    "issue_type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 7,
+  "fields": {
+    "created_at": "2021-03-10T19:01:03.234Z",
+    "updated_at": "2021-03-16T20:02:35.070Z",
+    "summary": "Ремонт авто",
+    "description": "Отвезти машину на ремонт. Замена масла, фильтров, ремонт ходовой части, компьютерная дианостика",
+    "status": 2,
+    "issue_type": [
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 8,
+  "fields": {
+    "created_at": "2021-03-12T14:01:49.640Z",
+    "updated_at": "2021-03-16T20:02:55.778Z",
+    "summary": "Пивоварить",
+    "description": "Пиво варит Иван Тараныч. Надо помочь",
+    "status": 2,
+    "issue_type": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 9,
+  "fields": {
+    "created_at": "2021-03-12T17:30:37.496Z",
+    "updated_at": "2021-03-16T20:02:24.735Z",
+    "summary": "Сварить картошку в мундире",
+    "description": "В 12:00 закинуть 8 яиц в кастрюлю с водой и поставить на газовую плиту. Варить 15 минут после кипячения.",
+    "status": 3,
+    "issue_type": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 12,
+  "fields": {
+    "created_at": "2021-03-12T20:25:05.183Z",
+    "updated_at": "2021-03-16T20:03:04.720Z",
+    "summary": "Скачать песни гр.Кино",
+    "description": "В.Цой. гр.Кино",
+    "status": 2,
+    "issue_type": [
+      1
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 13,
+  "fields": {
+    "created_at": "2021-03-12T20:28:15.626Z",
+    "updated_at": "2021-03-16T20:01:55.068Z",
+    "summary": "Вскопать землю",
+    "description": null,
+    "status": 1,
+    "issue_type": [
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 14,
+  "fields": {
+    "created_at": "2021-03-13T05:15:47.678Z",
+    "updated_at": "2021-03-16T20:02:46.062Z",
+    "summary": "Сделать зарядку",
+    "description": "Разминка 10 минут. Отжимания от пола 100 раз. Скручивания туловища на пресс 50 раз. Подтягивания на перекладине 40 раз.",
+    "status": 3,
+    "issue_type": [
+      3
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 15,
+  "fields": {
+    "created_at": "2021-03-13T05:18:12.812Z",
+    "updated_at": "2021-03-16T20:03:16.580Z",
+    "summary": "Полить деревья",
+    "description": "Два ведра на дерево",
+    "status": 2,
+    "issue_type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 16,
+  "fields": {
+    "created_at": "2021-03-16T07:45:16.176Z",
+    "updated_at": "2021-03-16T20:03:23.593Z",
+    "summary": "Затопить печь",
+    "description": "Уголь в углярке. Печь в топке. Золу вынести на улицу. Лопатка в сарае.",
+    "status": 3,
+    "issue_type": [
+      1
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 17,
+  "fields": {
+    "created_at": "2021-03-16T20:01:35.286Z",
+    "updated_at": "2021-03-16T20:01:35.286Z",
+    "summary": "Исправить ошибку в репозитории",
+    "description": "Исправить ошибку возникшую из-за того что коды написанные в винды и линукса не совпадают в гитхабе",
+    "status": 3,
+    "issue_type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.status",
+  "pk": 1,
+  "fields": {
+    "status_code": "New"
+  }
+},
+{
+  "model": "tracker.status",
+  "pk": 2,
+  "fields": {
+    "status_code": "In Progress"
+  }
+},
+{
+  "model": "tracker.status",
+  "pk": 3,
+  "fields": {
+    "status_code": "Done"
+  }
+},
+{
+  "model": "tracker.issue_type",
+  "pk": 1,
+  "fields": {
+    "issue_type_code": "Task"
+  }
+},
+{
+  "model": "tracker.issue_type",
+  "pk": 2,
+  "fields": {
+    "issue_type_code": "Bug"
+  }
+},
+{
+  "model": "tracker.issue_type",
+  "pk": 3,
+  "fields": {
+    "issue_type_code": "Enhancement"
+  }
+}
+]

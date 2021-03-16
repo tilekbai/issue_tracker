@@ -64,7 +64,6 @@ class Issue_createView(View):
         return render(request, 'issue_view.html', context={'issue': issue})
 
 
-
 class Issue_updateView(View):
 
     def get(self, request, *args, **kwargs):
@@ -73,19 +72,26 @@ class Issue_updateView(View):
             'summary': kwargs ["issue"].summary,
             'description': kwargs ["issue"].description,
             'status': kwargs ["issue"].status,
-            'issue_type': kwargs ["issue"].issue_type
+            'issue_type': kwargs ["issue"].issue_type.all()
         })
         return render(request, 'issue_update.html', context={'form': form, 'issue': kwargs ["issue"]})
 
     def post(self, request, *args, **kwargs):
         kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
+        
         form = IssueForm(data=request.POST) 
+                  
+        
+
         if form.is_valid(): 
+            issue_type=form.cleaned_data.pop('issue_type')
+
             kwargs ["issue"].summary = form.cleaned_data.get("summary")
             kwargs ["issue"].description = form.cleaned_data.get("description")
             kwargs ["issue"].status = form.cleaned_data.get("status")
-            kwargs ["issue"].issue_type = form.cleaned_data.get("issue_type")
             kwargs ["issue"].save()
+            
+            kwargs ["issue"].issue_type.set(issue_type)
             return redirect('issue-view', pk=kwargs ["issue"].id)
 
         return render(request, 'issue_update.html', context={'form': form, 'issue': kwargs ["issue"]})

@@ -6,7 +6,7 @@
     <p>Задача: {{ issue.summary }}</p>
     <p>Описание: {{ issue.description }}</p>
     <p>Статус: {{ issue.status }}</p>
-    <p>Тип: {{ issue.issue_type }}</p>
+    <p>Тип: <b>{% for issue_type in issue.issue_type.all %}{{ issue_type.issue_type_code }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
     <p>Время создания: {{ issue.created_at }}</p>
     <p>Время обновления: {{ issue.updated_at }}</p>
     {% endblock content %}

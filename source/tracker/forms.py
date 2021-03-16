@@ -7,6 +7,7 @@ class IssueForm(forms.ModelForm):
     class Meta:
         model = Issue
         fields = ('summary', 'description', 'status', 'issue_type')
+        issue_type = forms.ModelMultipleChoiceField(required=False, label="Типы", queryset=Issue_type.objects.all())
 
 
 class IssueDeleteForm(forms.Form):

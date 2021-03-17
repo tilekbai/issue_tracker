@@ -9,6 +9,12 @@ class IssueForm(forms.ModelForm):
         fields = ('summary', 'description', 'status', 'issue_type')
         issue_type = forms.ModelMultipleChoiceField(required=False, label="Типы", queryset=Issue_type.objects.all())
 
+    def clean_summary(self):
+        summary = self.cleaned_data["summary"]
+        if len(summary) < 4:
+            raise ValidationError("Название задачи слишком короткое!")
+        return summary
+
 
 class IssueDeleteForm(forms.Form):
     summary = forms.CharField(max_length=120, required=True, label='Введите название задачи, чтобы удалить её')

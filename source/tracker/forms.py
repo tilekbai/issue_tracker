@@ -15,6 +15,12 @@ class IssueForm(forms.ModelForm):
             raise ValidationError("Название задачи слишком короткое!")
         return summary
 
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data["summary"] == cleaned_data["description"]:
+            raise ValidationError("Название и описание задачи не должны быть одинаковыми!")
+        return cleaned_data
+
 
 class IssueDeleteForm(forms.Form):
     summary = forms.CharField(max_length=120, required=True, label='Введите название задачи, чтобы удалить её')

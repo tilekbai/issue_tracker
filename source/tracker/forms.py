@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 
 from tracker.models import Issue, Status, Issue_type
 
@@ -9,16 +10,16 @@ class IssueForm(forms.ModelForm):
         fields = ('summary', 'description', 'status', 'issue_type')
         issue_type = forms.ModelMultipleChoiceField(required=False, label="Типы", queryset=Issue_type.objects.all())
 
-    def clean_summary(self):
-        summary = self.cleaned_data["summary"]
-        if len(summary) < 4:
-            raise ValidationError("Название задачи слишком короткое!")
-        return summary
-
     def clean(self):
         cleaned_data = super().clean()
         if cleaned_data["summary"] == cleaned_data["description"]:
-            raise ValidationError("Название и описание задачи не должны быть одинаковыми!")
+            raise ValidationError("Название и описание задачи не должны быть одинаковыми!", code="message_error", params={"id": "id"})
+        return cleaned_data
+
+    def clean_stat_type(self):
+        cleaned_data = super().clean()
+        if cleaned_data["status"] == cleaned_data["status_type"]:
+            raise ValidationError("Статус и тип задачи не должны быть одинаковыми!", code="message_error", params={"id": "id"})
         return cleaned_data
 
 

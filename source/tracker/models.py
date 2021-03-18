@@ -1,5 +1,7 @@
 from django.db import models
 from django.forms import ModelChoiceField
+from django.core.validators import MinLengthValidator
+
 # Create your models here.
 
 class BaseModel(models.Model):
@@ -11,8 +13,8 @@ class BaseModel(models.Model):
 
 
 class Issue(BaseModel):
-    summary = models.CharField(max_length = 60, null = False, blank = False, verbose_name = "Заголовок")
-    description = models.CharField(max_length = 2000, null = True, blank=True, verbose_name = "Описание")
+    summary = models.CharField(max_length = 60, null = False, blank = False, verbose_name = "Заголовок", validators=[MinLengthValidator(4)])
+    description = models.CharField(max_length = 2000, null = True, blank=True, verbose_name = "Описание", validators=[MinLengthValidator(10)])
     status = models.ForeignKey("tracker.Status", on_delete=models.PROTECT, related_name="status", verbose_name="Статус")
     issue_type = models.ManyToManyField("tracker.Issue_type", related_name="issue_type", blank=True)
 

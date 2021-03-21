@@ -15,7 +15,7 @@ class BaseModel(models.Model):
 class Issue(BaseModel):
     summary = models.CharField(max_length = 60, null = False, blank = False, verbose_name = "Заголовок", validators=[MinLengthValidator(4)])
     description = models.CharField(max_length = 2000, null = True, blank=True, verbose_name = "Описание", validators=[MinLengthValidator(10)])
-    status = models.ForeignKey("tracker.Status", on_delete=models.PROTECT, related_name="status", verbose_name="Статус")
+    status = models.ForeignKey("tracker.Status", on_delete=models.PROTECT, related_name="status", verbose_name="Статус", null=True, blank=True)
     issue_type = models.ManyToManyField("tracker.Issue_type", related_name="issue_type", blank=True)
 
     class Meta:
@@ -24,7 +24,7 @@ class Issue(BaseModel):
         verbose_name_plural = "Задачи"
     
     def __str__(self):
-        return f'{self.id}. {self.summary}: {self.status}, {self.issue_type}, {self.description}'
+        return f'{self.id}. {self.summary}: {self.status}, {self.issue_type.all()}, {self.description}'
 
 
 class Status(models.Model):

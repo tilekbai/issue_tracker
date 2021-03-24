@@ -1,4 +1,4 @@
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.shortcuts import render, redirect
 
 from tracker.forms import IssueForm
@@ -38,3 +38,15 @@ class FormView(View):
     def get_redirect_url(self):
         return self.redirect_url
 
+
+class CustomListView(TemplateView):
+    model = None
+    context_name = None
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context[self.context_name] = self.get_queryset
+        return context
+
+    def get_queryset(self):
+        return self.model.objects.all()

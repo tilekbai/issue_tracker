@@ -1,19 +1,52 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.views.generic import View, TemplateView, RedirectView, FormView
-from tracker.base_view import FormView as CustomFormView
+from django.db.models import Q
+from django.utils.http import urlencode
+from django.views.generic import View, TemplateView, RedirectView, FormView, ListView
+from tracker.base_views import FormView as CustomFormView, CustomListView
 
 from tracker.models import Issue, Status, Issue_type
-from tracker.forms import IssueForm, IssueDeleteForm
+from tracker.forms import IssueForm, IssueDeleteForm, SearchForm
 
 # Create your views here.
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = "index.html"
+    model = Issue
+    context_object_name = "issues"
+    ordering = ("-created_at", "summary")
+    paginate_by = 10
+    paginate_orphans = 1
+
+    def get(self, request, **kwargs):
+        self.form = SearchForm(request.GET)
+        self.search_data = self.get_search_data()
+
+        return super(IndexView, self).get(request, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.search_data:
+            queryset = queryset.filter(
+                Q(summary__icontains = self.search_data) |
+                Q(description__icontains = self.search_data)
+            )
+        return queryset
+
+    def get_search_data(self):
+        if self.form.is_valid():
+            return self.form.cleaned_data["search_value"]
+        return None
+
 
     def get_context_data(self, **kwargs):
-        kwargs['issues'] = Issue.objects.all()
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = self.form
 
+        if self.search_data:
+            context["query"] = urlencode({"search_value": self.search_data})
+
+        return context
+    
 
 class IssueView(TemplateView):
     template_name = "issue_view.html"
@@ -37,9 +70,11 @@ class Issue_createView(CustomFormView):
        self.issue.issue_type.set(issue_type)
        return super().form_valid(form)
 
-
    def get_redirect_url(self):
        return reverse('issue-view', kwargs={'pk': self.issue.pk})
+
+
+
 
 
 class Issue_updateView(FormView):

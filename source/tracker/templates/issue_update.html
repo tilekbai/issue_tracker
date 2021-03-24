@@ -3,7 +3,7 @@
 <body>
     {% block page_header %}<h1>Редактирование задачи</h1>{% endblock page_header %}
     {% block content %}<form action="{% url 'issue-update' issue.id %}" method="post">
-        {% include "issue_form.html" with button_text="Редактировать статью" %}
+        {% include "partial/form.html" with button_text="Редактировать статью" %}
     {% endblock content %}
     </form>
 </body>

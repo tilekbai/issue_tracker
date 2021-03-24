@@ -6,7 +6,7 @@
     {% endblock page_header %}
     {% block content %}    
     <form action="/add/" method="post">
-        {% include "issue_form.html" with button_text="Создать задачу" %}
+        {% include "partial/form.html" with button_text="Создать задачу" %}
     </form>
     {% endblock content %}
 </body>

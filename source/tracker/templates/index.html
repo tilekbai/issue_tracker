@@ -7,13 +7,15 @@
     {% endblock %}
         
     <div>
-        <h1>Задачи</h1>
         {% block content %}
+        {% include "partial\search_form.html" %}
         <p>Список задач</p>
         {% for issue in issues %} 
                 <p>Название: <b>{{ issue.summary }}</b>.<br>Статус: <b>{{ issue.status }}</b> Тип: <b>{% for issue_type in issue.issue_type.all %}{{ issue_type.issue_type_code }}{% if not forloop.last %}, {% endif %}{% endfor %}</p> 
                 <a href="{% url 'issue-delete' issue.id %}">Удалить задачу</a> <a href="{% url 'issue-update' issue.id %}">Изменить задачу</a> <a href="{% url 'issue-view' issue.id %}">Посмотреть задачу</a>
+
         {% endfor %}
+        {% include "partial/paginate.html" %}
         {% endblock content %}
     </div>
     

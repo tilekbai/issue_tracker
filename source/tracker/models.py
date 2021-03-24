@@ -24,7 +24,7 @@ class Issue(BaseModel):
         verbose_name_plural = "Задачи"
     
     def __str__(self):
-        return f'{self.id}. {self.summary}: {self.status}, {self.issue_type.all()}, {self.description}'
+        return f'{self.id}. {self.summary}. Status: {self.status}. Type: {self.issue_type.all()}, Descripton: {self.description}'
 
 
 class Status(models.Model):

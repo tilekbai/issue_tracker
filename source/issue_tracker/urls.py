@@ -15,15 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tracker.views import IndexView, IssueView, Issue_updateView, Issue_deleteView, Issue_createView, ProjectView
+from tracker.views import IndexView, IssueView, Issue_updateView, Issue_deleteView, Issue_createView, ProjectView, ProjectsListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name="issue-list"),
-    # path('add/', Issue_createView.as_view(), name="issue-add"),
     path('add/', Issue_createView.as_view(), name="issue-add"),
     path('<int:pk>/', IssueView.as_view(), name= "issue-view"),
     path('<int:pk>/update', Issue_updateView.as_view(), name="issue-update"),
     path('<int:pk>/delete', Issue_deleteView.as_view(), name='issue-delete'),
     path('<int:pk>/project', ProjectView.as_view(), name='project-view'),
+    path('projects/list', ProjectsListView.as_view(), name="projects-list"),
 ]

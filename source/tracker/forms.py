@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from tracker.models import Issue, Status, Issue_type
+from tracker.models import Issue, Status, Issue_type, Project
 
 
 class IssueForm(forms.ModelForm):
@@ -28,4 +28,21 @@ class IssueDeleteForm(forms.Form):
 
 
 class SearchForm(forms.Form):
+    search_value = forms.CharField(max_length=100, required=False, label="Поиск")
+
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('name', 'description', 'start_date', 'end_date')
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data["name"] == cleaned_data["description"]:
+            raise ValidationError("Название и описание проекта не должны быть одинаковыми!", code="message_error", params={"id": "id"})
+        return cleaned_data
+
+
+class SearchProjectForm(forms.Form):
     search_value = forms.CharField(max_length=100, required=False, label="Поиск")

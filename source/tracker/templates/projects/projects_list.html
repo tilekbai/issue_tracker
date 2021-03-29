@@ -1,18 +1,13 @@
-{% extends "base.html" %}
+{% extends "projects/base.html" %}
 {% block title %}Все проекты{% endblock title %}
 <body>
-    
-    {% block menu %}
-    <li><a href="{% url 'issue-list' %}">Главная</a></li>
-    {% endblock %}
         
     <div>
         {% block content %}
         {% include "partial\search_form.html" %}
-        <p>Список задач</p>
         {% for project in projects %} 
-                <p>Название: <b>{{ project.name }}</b>.</p> 
-                <a href="{% url 'project-view' project.id %}">Посмотреть проект</a>
+                <p>Название: <b>{{ project.name }}</b>.<a href="{% url 'project-view' project.id %}">Посмотреть проект</a></p> 
+                
 
         {% endfor %}
         {% include "partial/paginate.html" %}

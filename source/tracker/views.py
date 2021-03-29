@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models import Q
 from django.utils.http import urlencode
-from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, DetailView
+from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, DetailView, CreateView
 from tracker.base_views import FormView as CustomFormView, CustomListView
 
 from tracker.models import Issue, Status, Issue_type, Project
-from tracker.forms import IssueForm, IssueDeleteForm, SearchForm
+from tracker.forms import IssueForm, IssueDeleteForm, SearchForm, ProjectForm, SearchProjectForm
 
 # Create your views here.
 
@@ -172,3 +172,12 @@ class ProjectsListView(ListView):
             context["query"] = urlencode({"search_value": self.search_data})
 
         return context
+
+
+class ProjectCreateView(CreateView):
+    template_name = 'projects/create_project.html'
+    model = Project
+    form_class = ProjectForm
+
+    def get_success_url(self):
+        return reverse('project-view', kwargs={'pk': self.object.pk})

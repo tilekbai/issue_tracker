@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Проект {{project.id}}{% endblock title %}
+<body>
+    {% block page_header %}Проект {{project.id}}{% endblock page_header %}
+    {% block content %}
+    <p>Проект: {{ project.name }}</p>
+    <p>{{ project.description }}</p>
+    <p>Дата создания: {{ project.start_date }}</p>
+    <p>Дата окончания: {{ project.end_date }}</p>
+    {% endblock content %}
+</body>

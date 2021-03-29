@@ -4,10 +4,10 @@
   "pk": 1,
   "fields": {
     "created_at": "2021-03-10T18:47:53.321Z",
-    "updated_at": "2021-03-16T19:59:58.701Z",
+    "updated_at": "2021-03-29T11:46:46.566Z",
     "summary": "Öגועû םא 8 לאנעא!!",
     "description": "Êףןטעü צגועû םא ןנאחהםטך: 2 בףךועא נאח, 3 בףךועא ע‏כüןאםמג",
-    "status": 1,
+    "status": 3,
     "project": 1,
     "issue_type": [
       2,
@@ -595,13 +595,74 @@
   "pk": 44,
   "fields": {
     "created_at": "2021-03-29T08:07:16.636Z",
-    "updated_at": "2021-03-29T08:07:16.636Z",
+    "updated_at": "2021-03-29T08:22:18.894Z",
     "summary": "Issyk-kul",
     "description": "Îעןףסך םא כועמ",
     "status": 1,
-    "project": 2,
+    "project": 3,
     "issue_type": [
       1
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 45,
+  "fields": {
+    "created_at": "2021-03-29T12:18:06.895Z",
+    "updated_at": "2021-03-29T12:18:06.895Z",
+    "summary": "GGGG",
+    "description": "HOHOHOHOHOHO",
+    "status": 1,
+    "project": 1,
+    "issue_type": [
+      1
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 46,
+  "fields": {
+    "created_at": "2021-03-29T12:21:57.582Z",
+    "updated_at": "2021-03-29T12:21:57.582Z",
+    "summary": "Mignolet",
+    "description": "Simone Goalkiper",
+    "status": 1,
+    "project": 1,
+    "issue_type": [
+      1
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 47,
+  "fields": {
+    "created_at": "2021-03-29T12:29:05.990Z",
+    "updated_at": "2021-03-29T12:29:05.990Z",
+    "summary": "נננננננננננננננננננ",
+    "description": "הההההההההההההההההה",
+    "status": 2,
+    "project": 1,
+    "issue_type": [
+      2
+    ]
+  }
+},
+{
+  "model": "tracker.issue",
+  "pk": 48,
+  "fields": {
+    "created_at": "2021-03-29T12:49:24.126Z",
+    "updated_at": "2021-03-29T12:49:24.126Z",
+    "summary": "rrrrrrrrrrrr",
+    "description": "rrrrrrrrrrrrrrrrr",
+    "status": 2,
+    "project": 10,
+    "issue_type": [
+      1,
+      3
     ]
   }
 },
@@ -664,7 +725,7 @@
     "start_date": "2021-03-01",
     "end_date": null,
     "name": "Travel",
-    "description": ""
+    "description": "Ïףעורוסעגטÿ גמךנףד סגועא"
   }
 },
 {
@@ -674,7 +735,77 @@
     "start_date": "2021-03-09",
     "end_date": null,
     "name": "Nature",
-    "description": ""
+    "description": "Ïנטנמהא"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 4,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": "2021-04-28",
+    "name": "Experiment",
+    "description": "It's checking my Project Create View"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 5,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": "2021-04-28",
+    "name": "Check function",
+    "description": "It's checking my Project Create View"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 6,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": "2021-04-28",
+    "name": "Check function",
+    "description": "It's checking my Project Create View"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 7,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": "2021-04-28",
+    "name": "Proverka",
+    "description": "It's checking my Project Create View"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 8,
+  "fields": {
+    "start_date": "2021-03-01",
+    "end_date": null,
+    "name": "Sport",
+    "description": "Football"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 9,
+  "fields": {
+    "start_date": "2021-03-29",
+    "end_date": null,
+    "name": "Cinema",
+    "description": "Film"
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 10,
+  "fields": {
+    "start_date": "2021-03-29",
+    "end_date": null,
+    "name": "Cinema",
+    "description": "Film"
   }
 },
 {

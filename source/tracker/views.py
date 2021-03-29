@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models import Q
 from django.utils.http import urlencode
-from django.views.generic import View, TemplateView, RedirectView, FormView, ListView
+from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, DetailView
 from tracker.base_views import FormView as CustomFormView, CustomListView
 
-from tracker.models import Issue, Status, Issue_type
+from tracker.models import Issue, Status, Issue_type, Project
 from tracker.forms import IssueForm, IssueDeleteForm, SearchForm
 
 # Create your views here.
@@ -74,9 +74,6 @@ class Issue_createView(CustomFormView):
        return reverse('issue-view', kwargs={'pk': self.issue.pk})
 
 
-
-
-
 class Issue_updateView(FormView):
     template_name = 'issue_update.html'
     form_class = IssueForm
@@ -131,3 +128,8 @@ class Issue_deleteView(View):
             kwargs ["issue"].delete()
             return redirect('issue-list')
         return render(request, 'issue_delete.html', context={'issue': kwargs ["issue"], 'form': form})
+
+
+class ProjectView(DetailView):
+    template_name = "projects/project_view.html"
+    model = Project

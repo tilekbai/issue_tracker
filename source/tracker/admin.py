@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tracker.models import Issue, Status, Issue_type
+from tracker.models import Issue, Status, Issue_type, Project
 
 # Register your models here.
 
@@ -8,7 +8,7 @@ class IssueAdmin(admin.ModelAdmin):
     list_display = ["id", "summary", "description", "status", "created_at", "updated_at"]
     list_filter = ["id", "summary", "status"]
     search_fields = ["description", "created_at", "updated_at"]
-    fields = ["id", "summary", "description", "status", "issue_type", "created_at", "updated_at"]
+    fields = ["id", "summary", "description", "status", "issue_type", "created_at", "updated_at", "project"]
     readonly_fields = ["created_at", "updated_at", "id"]
 
 admin.site.register(Issue, IssueAdmin)
@@ -30,3 +30,13 @@ class Issue_typeAdmin(admin.ModelAdmin):
     readonly_fields = ["id"]
 
 admin.site.register(Issue_type, Issue_typeAdmin)
+
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ["id", "name", "start_date", "end_date", "description"]
+    list_filter = ["id", "name"]
+    list_search = ["name"]
+    fields = ["id", "name", "description", "start_date", "end_date"]
+    readonly_fields = ["id"]
+
+admin.site.register(Project, ProjectAdmin)

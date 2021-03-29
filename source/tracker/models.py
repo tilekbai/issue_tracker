@@ -17,6 +17,7 @@ class Issue(BaseModel):
     description = models.CharField(max_length = 2000, null = True, blank=True, verbose_name = "Описание", validators=[MinLengthValidator(10)])
     status = models.ForeignKey("tracker.Status", on_delete=models.PROTECT, related_name="status", verbose_name="Статус", null=True, blank=True)
     issue_type = models.ManyToManyField("tracker.Issue_type", related_name="issue_type", blank=True)
+    project = models.ForeignKey("tracker.Project", on_delete=models.PROTECT, related_name="project", null=True, blank=True, default=1)
 
     class Meta:
         db_table = "issues"
@@ -24,7 +25,7 @@ class Issue(BaseModel):
         verbose_name_plural = "Задачи"
     
     def __str__(self):
-        return f'{self.id}. {self.summary}. Status: {self.status}. Type: {self.issue_type.all()}, Descripton: {self.description}'
+        return f'{self.id}. {self.summary}. Status: {self.status}. Type: {self.issue_type.all()}, Descripton: {self.description}. Project: {self.project}.'
 
 
 class Status(models.Model):
@@ -51,3 +52,16 @@ class Issue_type(models.Model):
         return f'{self.issue_type_code}'     
 
 
+class Project(models.Model):
+    start_date = models.DateField(auto_now=False)
+    end_date = models.DateField(auto_now=False, null=True, blank=True)
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = "project"
+        verbose_name = "Проект"
+        verbose_name_plural = "Проекты"
+
+    def __str__(self):
+        return f"{self.name}"

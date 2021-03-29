@@ -181,3 +181,27 @@ class ProjectCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('project-view', kwargs={'pk': self.object.pk})
+
+
+class ProjectIssueCreateView(CreateView):
+    model = Issue
+    template_name = 'issue_create.html'
+    form_class = IssueForm
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        issue = form.save(commit=False)
+        issue.project = project
+        issue.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse(
+            'project-view',
+            kwargs={'pk': self.kwargs.get('pk')}
+        )
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        form.instance.project = project
+        return super().form_valid(form)

@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models import Q
 from django.utils.http import urlencode
-from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, DetailView, CreateView, UpdateView
+from django.urls import reverse_lazy
+from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from tracker.base_views import FormView as CustomFormView, CustomListView
 
 from tracker.models import Issue, Status, Issue_type, Project
@@ -86,23 +87,11 @@ class Issue_updateView(UpdateView):
         return get_object_or_404(Issue, pk=pk)
         
 
-class Issue_deleteView(View):
-    def get(self, request, *args, **kwargs):
-        kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
-        form = IssueDeleteForm()
-        return render(request, 'issue_delete.html', context={'issue': kwargs ["issue"], 'form': form})
-
-    def post(self, request, *args, **kwargs):
-        kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
-        form = IssueDeleteForm(data=request.POST)
-        if form.is_valid():
-            if form.cleaned_data['summary'] != kwargs ["issue"].summary:
-                form.errors['summary'] = ['Названия задач не совпадают']
-                return render(request, 'issue_delete.html', context={'issue': kwargs ["issue"], 'form': form})
-
-            kwargs ["issue"].delete()
-            return redirect('issue-list')
-        return render(request, 'issue_delete.html', context={'issue': kwargs ["issue"], 'form': form})
+class Issue_deleteView(DeleteView):
+    template_name = 'issue_delete.html'
+    model = Issue
+    context_object_name = 'issue'
+    success_url = reverse_lazy('issue-list')
 
 
 class ProjectView(DetailView):

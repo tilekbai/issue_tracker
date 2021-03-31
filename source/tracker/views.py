@@ -180,3 +180,13 @@ class ProjectIssueCreateView(CreateView):
         project = get_object_or_404(Project, id=self.kwargs.get('pk'))
         form.instance.project = project
         return super().form_valid(form)
+
+
+class ProjectUpdateView(UpdateView):
+    model = Project
+    template_name = 'projects/project_update.html'
+    form_class = ProjectForm
+    context_object_name = 'project'
+
+    def get_success_url(self):
+        return reverse('project-view', kwargs={'pk': self.object.pk})

@@ -6,7 +6,7 @@
         {% block content %}
         {% include "partial\search_form.html" %}
         {% for project in projects %} 
-                <p>Название: <b>{{ project.name }}</b>.<a href="{% url 'project-view' project.id %}">Посмотреть проект</a></p> 
+                <p>Название: <b>{{ project.name }}</b>.<a href="{% url 'project-view' project.id %}">Посмотреть проект</a> <a href="{% url 'project-update' project.id %}">Редактировать проект</a> </p> 
                 
 
         {% endfor %}

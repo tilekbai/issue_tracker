@@ -1,22 +1,6 @@
 [
 {
   "model": "tracker.issue",
-  "pk": 1,
-  "fields": {
-    "created_at": "2021-03-10T18:47:53.321Z",
-    "updated_at": "2021-03-29T11:46:46.566Z",
-    "summary": "Öגועû םא 8 לאנעא!!",
-    "description": "Êףןטעü צגועû םא ןנאחהםטך: 2 בףךועא נאח, 3 בףךועא ע‏כüןאםמג",
-    "status": 3,
-    "project": 1,
-    "issue_type": [
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
   "pk": 2,
   "fields": {
     "created_at": "2021-03-10T18:51:09.790Z",
@@ -501,21 +485,6 @@
 },
 {
   "model": "tracker.issue",
-  "pk": 38,
-  "fields": {
-    "created_at": "2021-03-18T17:44:35.749Z",
-    "updated_at": "2021-03-18T17:44:35.749Z",
-    "summary": "Ïנאגטכüםûי במי",
-    "description": "Ñהוכאי ‎עמ ט טהט המ ךמםצא",
-    "status": 1,
-    "project": 1,
-    "issue_type": [
-      2
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
   "pk": 39,
   "fields": {
     "created_at": "2021-03-18T18:35:50.965Z",
@@ -607,21 +576,6 @@
 },
 {
   "model": "tracker.issue",
-  "pk": 45,
-  "fields": {
-    "created_at": "2021-03-29T12:18:06.895Z",
-    "updated_at": "2021-03-29T12:18:06.895Z",
-    "summary": "GGGG",
-    "description": "HOHOHOHOHOHO",
-    "status": 1,
-    "project": 1,
-    "issue_type": [
-      1
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
   "pk": 46,
   "fields": {
     "created_at": "2021-03-29T12:21:57.582Z",
@@ -637,32 +591,16 @@
 },
 {
   "model": "tracker.issue",
-  "pk": 47,
+  "pk": 49,
   "fields": {
-    "created_at": "2021-03-29T12:29:05.990Z",
-    "updated_at": "2021-03-29T12:29:05.990Z",
-    "summary": "נננננננננננננננננננ",
-    "description": "הההההההההההההההההה",
+    "created_at": "2021-04-01T10:24:04.095Z",
+    "updated_at": "2021-04-01T10:24:29.836Z",
+    "summary": "Medicine Aspirine",
+    "description": "Health. Ambulance",
     "status": 2,
-    "project": 1,
+    "project": 6,
     "issue_type": [
       2
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
-  "pk": 48,
-  "fields": {
-    "created_at": "2021-03-29T12:49:24.126Z",
-    "updated_at": "2021-03-29T12:49:24.126Z",
-    "summary": "rrrrrrrrrrrr",
-    "description": "rrrrrrrrrrrrrrrrr",
-    "status": 2,
-    "project": 10,
-    "issue_type": [
-      1,
-      3
     ]
   }
 },
@@ -754,7 +692,7 @@
   "fields": {
     "start_date": "2021-03-28",
     "end_date": "2021-04-28",
-    "name": "Check function",
+    "name": "Spider Man",
     "description": "It's checking my Project Create View"
   }
 },
@@ -794,18 +732,8 @@
   "fields": {
     "start_date": "2021-03-29",
     "end_date": null,
-    "name": "Cinema",
-    "description": "Film"
-  }
-},
-{
-  "model": "tracker.project",
-  "pk": 10,
-  "fields": {
-    "start_date": "2021-03-29",
-    "end_date": null,
-    "name": "Cinema",
-    "description": "Film"
+    "name": "Cinematica",
+    "description": "FilmProductions"
   }
 },
 {

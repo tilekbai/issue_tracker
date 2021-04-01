@@ -179,3 +179,10 @@ class ProjectUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('project-view', kwargs={'pk': self.object.pk})
+
+
+class Project_deleteView(DeleteView):
+    template_name = 'projects/project_delete.html'
+    model = Project
+    context_object_name = 'project'
+    success_url = reverse_lazy('projects-list')

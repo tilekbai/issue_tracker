@@ -47,7 +47,7 @@ class IndexView(ListView):
             context["query"] = urlencode({"search_value": self.search_data})
 
         return context
-    
+
 
 class IssueView(TemplateView):
     template_name = "issue_view.html"

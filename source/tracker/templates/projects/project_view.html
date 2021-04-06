@@ -16,7 +16,6 @@
             <div class="projects_issues">
                 <p>Название: <b>{{ issue.summary }}</b>.<br>Статус: <b>{{ issue.status }}</b> Тип: <b>{% for issue_type in issue.issue_type.all %}{{ issue_type.issue_type_code }}{% if not forloop.last %}, {% endif %}{% endfor %}</p> 
                     <a href="{% url 'issue-delete' issue.id %}">Удалить задачу</a> <a href="{% url 'issue-update' issue.id %}">Изменить задачу</a> <a href="{% url 'issue-view' issue.id %}">Посмотреть задачу</a>
-                <div class="pre">{{ comment.text }}</div>
             </div>
         {% empty %}
             <p>Нет задач.</p>

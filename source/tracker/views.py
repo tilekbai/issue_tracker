@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models import Q
 from django.utils.http import urlencode
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from tracker.base_views import FormView as CustomFormView, CustomListView
 
@@ -57,25 +58,25 @@ class IssueView(TemplateView):
         return super().get_context_data(**kwargs)
 
 
-class Issue_createView(CustomFormView):
-   template_name = 'issue_create.html'
-   form_class = IssueForm
+class Issue_createView(LoginRequiredMixin, CustomFormView):
+    template_name = 'issue_create.html'
+    form_class = IssueForm
 
-   def form_valid(self, form):
-       data = {}
-       issue_type = form.cleaned_data.pop('issue_type')
-       for key, value in form.cleaned_data.items():
-           if value is not None:
-               data[key] = value
-       self.issue = Issue.objects.create(**data)
-       self.issue.issue_type.set(issue_type)
-       return super().form_valid(form)
+    def form_valid(self, form):
+        data = {}
+        issue_type = form.cleaned_data.pop('issue_type')
+        for key, value in form.cleaned_data.items():
+            if value is not None:
+                data[key] = value
+        self.issue = Issue.objects.create(**data)
+        self.issue.issue_type.set(issue_type)
+        return super().form_valid(form)
 
-   def get_redirect_url(self):
-       return reverse('issue-view', kwargs={'pk': self.issue.pk})
+    def get_redirect_url(self):
+        return reverse('issue-view', kwargs={'pk': self.issue.pk})
 
 
-class Issue_updateView(UpdateView):
+class Issue_updateView(LoginRequiredMixin, UpdateView):
     model = Issue
     template_name = 'issue_update.html'
     form_class = IssueForm
@@ -87,11 +88,16 @@ class Issue_updateView(UpdateView):
         return get_object_or_404(Issue, pk=pk)
         
 
-class Issue_deleteView(DeleteView):
+class Issue_deleteView(LoginRequiredMixin, DeleteView):
     template_name = 'issue_delete.html'
     model = Issue
     context_object_name = 'issue'
     success_url = reverse_lazy('issue-list')
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
 
 
 class ProjectView(DetailView):
@@ -138,7 +144,7 @@ class ProjectsListView(ListView):
         return context
 
 
-class ProjectCreateView(CreateView):
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     template_name = 'projects/create_project.html'
     model = Project
     form_class = ProjectForm
@@ -147,7 +153,7 @@ class ProjectCreateView(CreateView):
         return reverse('project-view', kwargs={'pk': self.object.pk})
 
 
-class ProjectIssueCreateView(CreateView):
+class ProjectIssueCreateView(LoginRequiredMixin, CreateView):
     model = Issue
     template_name = 'issue_create.html'
     form_class = IssueForm
@@ -171,7 +177,7 @@ class ProjectIssueCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
     template_name = 'projects/project_update.html'
     form_class = ProjectForm
@@ -181,7 +187,7 @@ class ProjectUpdateView(UpdateView):
         return reverse('project-view', kwargs={'pk': self.object.pk})
 
 
-class Project_deleteView(DeleteView):
+class Project_deleteView(LoginRequiredMixin, DeleteView):
     template_name = 'projects/project_delete.html'
     model = Project
     context_object_name = 'project'

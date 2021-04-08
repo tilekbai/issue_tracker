@@ -1,7 +1,8 @@
 body {
     margin-top: 60px;
-    font-family: monospace;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
     font-size: 18px;
+    background-color: honeydew;
 }
 
 .container{
@@ -22,13 +23,14 @@ body {
 
 h1 {
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 70px;
+    color: darkolivegreen;
 }
 
 .container a {
     margin-right: 30px;
     color: rgb(9, 9, 114);
-    font-weight: bold;
+    border-width: 3px;
 }
 
 .pagination {
@@ -37,25 +39,26 @@ h1 {
 
 .pagination a, .pagination .page-disabled {
     display: inline-block;
-    border: solid 1px #6a7ddd;
+    border: solid 1px darkolivegreen;
+    background-color: darkolivegreen;
     border-radius: 3px;
     padding: 5px;
     margin: 3px;
 }
 
 .pagination a {
-    background: #6a7ddd;
+    background: darkolivegreen;
     color: white;
     text-decoration: none;
 }
 
 .pagination a:hover {
-    background: #6a7dff;
+    background: darkolivegreen;
     text-decoration: underline;
 }
 
 .pagination .page-disabled {
-    background: #6a7dcc;
+    background: darkolivegreen;
     color: #dddddd
 }
 

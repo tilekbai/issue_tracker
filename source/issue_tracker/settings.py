@@ -122,5 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = 'issue-list'
-LOGOUT_REDIRECT_URL = 'issue-list'
+LOGIN_REDIRECT_URL = 'tracker:issue-list'
+LOGOUT_REDIRECT_URL = 'tracker:issue-list'

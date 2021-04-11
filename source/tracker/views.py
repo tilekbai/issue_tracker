@@ -73,7 +73,7 @@ class Issue_createView(LoginRequiredMixin, CustomFormView):
         return super().form_valid(form)
 
     def get_redirect_url(self):
-        return reverse('issue-view', kwargs={'pk': self.issue.pk})
+        return reverse('tracker:issue-view', kwargs={'pk': self.issue.pk})
 
 
 class Issue_updateView(LoginRequiredMixin, UpdateView):
@@ -83,7 +83,7 @@ class Issue_updateView(LoginRequiredMixin, UpdateView):
     context_object_name = 'issue'
 
     def get_success_url(self):
-        return reverse('issue-view', kwargs={'pk': self.object.pk})
+        return reverse('tracker:issue-view', kwargs={'pk': self.object.pk})
         pk = self.kwargs.get('pk')
         return get_object_or_404(Issue, pk=pk)
         
@@ -92,13 +92,8 @@ class Issue_deleteView(LoginRequiredMixin, DeleteView):
     template_name = 'issue_delete.html'
     model = Issue
     context_object_name = 'issue'
-    success_url = reverse_lazy('issue-list')
+    success_url = reverse_lazy('tracker:issue-list')
     
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect('login')
-        return super().dispatch(request, *args, **kwargs)
-
 
 class ProjectView(DetailView):
     template_name = "projects/project_view.html"
@@ -150,7 +145,7 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     form_class = ProjectForm
 
     def get_success_url(self):
-        return reverse('project-view', kwargs={'pk': self.object.pk})
+        return reverse('tracker:project-view', kwargs={'pk': self.object.pk})
 
 
 class ProjectIssueCreateView(LoginRequiredMixin, CreateView):
@@ -167,7 +162,7 @@ class ProjectIssueCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse(
-            'project-view',
+            'tracker:project-view',
             kwargs={'pk': self.kwargs.get('pk')}
         )
 
@@ -184,11 +179,11 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     context_object_name = 'project'
 
     def get_success_url(self):
-        return reverse('project-view', kwargs={'pk': self.object.pk})
+        return reverse('tracker:project-view', kwargs={'pk': self.object.pk})
 
 
 class Project_deleteView(LoginRequiredMixin, DeleteView):
     template_name = 'projects/project_delete.html'
     model = Project
     context_object_name = 'project'
-    success_url = reverse_lazy('projects-list')
+    success_url = reverse_lazy('tracker:projects-list')

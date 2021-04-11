@@ -3,9 +3,9 @@
 <body>
     {% block page_header %}Удаление проекта{% endblock page_header %}
     {% block content %}
-    <form action="{% url 'project-delete' project.id %}", method="POST">
+    <form action="{% url 'tracker:project-delete' project.id %}", method="POST">
         {% include 'partial/project_form.html' with button_text="Да, я хочу удалить проект" %}
-        <a href="{% url 'project-view' project.id %}">Отмена</a>
+        <a href="{% url 'tracker:project-view' project.id %}">Отмена</a>
     </form>
     {% endblock content %}     
 </body>

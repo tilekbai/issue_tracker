@@ -4,9 +4,9 @@
         
     <div>
         {% block content %}        
-        {% include "partial\search_form.html" %}
+        {% include "partial/search_form.html" %}
         {% for project in projects %} 
-                <p>Название: <b>{{ project.name }}</b>.<a href="{% url 'project-view' project.id %}">Посмотреть проект</a> <a href="{% url 'project-update' project.id %}">Редактировать проект</a> <a href="{% url 'project-delete' project.id %}">Удалить проект</a> </p>          
+                <p>Название: <b>{{ project.name }}</b>.<a href="{% url 'tracker:project-view' project.id %}">Посмотреть проект</a> <a href="{% url 'tracker:project-update' project.id %}">Редактировать проект</a> <a href="{% url 'tracker:project-delete' project.id %}">Удалить проект</a> </p>          
         {% endfor %}
         {% include "partial/paginate.html" %}
         {% endblock content %}

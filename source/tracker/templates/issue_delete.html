@@ -3,9 +3,9 @@
 <body>
     {% block page_header %}Удаление задачи{% endblock page_header %}
     {% block content %}
-    <form action="{% url 'issue-delete' issue.id %}", method="POST">
+    <form action="{% url 'tracker:issue-delete' issue.id %}", method="POST">
         {% include 'partial/issue_form.html' with button_text="Да, я хочу удалить задачу" %}
-        <a href="{% url 'issue-view' issue.id %}">Отмена. Код красный. КОД КРАСНЫЙ!!</a>
+        <a href="{% url 'tracker:issue-view' issue.id %}">Отмена. Код красный. КОД КРАСНЫЙ!!</a>
     </form>
     {% endblock content %}     
 </body>

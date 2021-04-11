@@ -2,7 +2,7 @@
 {% block title %}Проект {{project.id}}{% endblock title %}
 <body>
     {% block menu %}
-    <li><a href="{% url 'issue-add' project.pk %}">Создать задачу</a></li>
+    <li><a href="{% url 'tracker:issue-add' project.pk %}">Создать задачу</a></li>
     {% endblock %}
     {% block page_header %}Проект {{project.id}}{% endblock page_header %}
     {% block content %}
@@ -15,7 +15,7 @@
         {% for issue in project.project.all %}
             <div class="projects_issues">
                 <p>Название: <b>{{ issue.summary }}</b>.<br>Статус: <b>{{ issue.status }}</b> Тип: <b>{% for issue_type in issue.issue_type.all %}{{ issue_type.issue_type_code }}{% if not forloop.last %}, {% endif %}{% endfor %}</p> 
-                    <a href="{% url 'issue-delete' issue.id %}">Удалить задачу</a> <a href="{% url 'issue-update' issue.id %}">Изменить задачу</a> <a href="{% url 'issue-view' issue.id %}">Посмотреть задачу</a>
+                    <a href="{% url 'tracker:issue-delete' issue.id %}">Удалить задачу</a> <a href="{% url 'tracker:issue-update' issue.id %}">Изменить задачу</a> <a href="{% url 'tracker:issue-view' issue.id %}">Посмотреть задачу</a>
             </div>
         {% empty %}
             <p>Нет задач.</p>

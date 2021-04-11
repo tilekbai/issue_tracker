@@ -2,7 +2,7 @@
 {% block title %}Редактирование проекта{% endblock title %}
 <body>
     {% block page_header %}<h1>Редактирование проекта</h1>{% endblock page_header %}
-    {% block content %}<form action="{% url 'project-update' project.id %}" method="post">
+    {% block content %}<form action="{% url 'tracker:project-update' project.id %}" method="post">
         {% include "partial/form.html" with button_text="Редактировать проект" %}
     {% endblock content %}
     </form>

@@ -10,11 +10,12 @@
     <p>{{ project.description }}</p>
     <p>Дата создания: {{ project.start_date }}</p>
     <p>Дата окончания: {{ project.end_date }}</p>
+    <p>Пользователи: {% for user_id in project.user_id.all %}{{ user_id }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
     <h3>Задачи:</h3>
     <div class="issues_list">
         {% for issue in project.project.all %}
             <div class="projects_issues">
-                <p>Название: <b>{{ issue.summary }}</b>.<br>Статус: <b>{{ issue.status }}</b> Тип: <b>{% for issue_type in issue.issue_type.all %}{{ issue_type.issue_type_code }}{% if not forloop.last %}, {% endif %}{% endfor %}</p> 
+                <p>Название: <b>{{ issue.summary }}</b>.<br>Статус: <b>{{ issue.status }}</b> Тип: <b>{% for issue_type in issue.issue_type.all %}{{ issue_type.issue_type_code }}{% if not forloop.last %}, {% endif %}{% endfor %} </p> 
                     <a href="{% url 'tracker:issue-delete' issue.id %}">Удалить задачу</a> <a href="{% url 'tracker:issue-update' issue.id %}">Изменить задачу</a> <a href="{% url 'tracker:issue-view' issue.id %}">Посмотреть задачу</a>
             </div>
         {% empty %}

@@ -93,7 +93,7 @@ class Issue_deleteView(LoginRequiredMixin, DeleteView):
     model = Issue
     context_object_name = 'issue'
     success_url = reverse_lazy('tracker:issue-list')
-    
+
 
 class ProjectView(DetailView):
     template_name = "projects/project_view.html"

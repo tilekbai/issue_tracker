@@ -34,9 +34,9 @@ admin.site.register(Issue_type, Issue_typeAdmin)
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "start_date", "end_date", "description"]
-    list_filter = ["id", "name"]
+    list_filter = ["id", "name", "user_id"]
     list_search = ["name"]
-    fields = ["id", "name", "description", "start_date", "end_date"]
+    fields = ["id", "name", "description", "start_date", "end_date", "user_id"]
     readonly_fields = ["id"]
 
 admin.site.register(Project, ProjectAdmin)

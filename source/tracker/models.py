@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms import ModelChoiceField
 from django.core.validators import MinLengthValidator
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -57,6 +58,7 @@ class Project(models.Model):
     end_date = models.DateField(auto_now=False, null=True, blank=True)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
+    user_id = models.ManyToManyField(User, related_name="projects")
 
     class Meta:
         db_table = "project"

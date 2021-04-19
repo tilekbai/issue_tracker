@@ -1,0 +1,3 @@
+{% for project in projects %} 
+    <p>Название: <b>{{ project.name }}</b>.<a href="{% url 'tracker:project-view' project.id %}">Посмотреть проект</a> <a href="{% url 'tracker:project-update' project.id %}">Редактировать проект</a> <a href="{% url 'tracker:project-delete' project.id %}">Удалить проект</a> </p>          
+{% endfor %}

@@ -1,7 +1,7 @@
 from django.db import models
 from django.forms import ModelChoiceField
 from django.core.validators import MinLengthValidator
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -58,12 +58,15 @@ class Project(models.Model):
     end_date = models.DateField(auto_now=False, null=True, blank=True)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
-    user_id = models.ManyToManyField(User, related_name="projects")
+    user_id = models.ManyToManyField(get_user_model(), related_name="projects")
 
     class Meta:
         db_table = "project"
         verbose_name = "Проект"
         verbose_name_plural = "Проекты"
+        permissions = [
+            ('project_user_add', 'Можно добавлять пользователя в проект')
+        ]
 
     def __str__(self):
         return f"{self.name}"

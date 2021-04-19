@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-
+from django.contrib.auth.models import User
 from tracker.models import Issue, Status, Issue_type, Project
 
 
@@ -46,3 +46,11 @@ class ProjectForm(forms.ModelForm):
 
 class SearchProjectForm(forms.Form):
     search_value = forms.CharField(max_length=100, required=False, label="Поиск")
+
+
+class UsersListForm(forms.ModelForm):
+    user = forms.ModelMultipleChoiceField(required=False, widget=forms.CheckboxSelectMultiple, label="userlist", queryset=User.objects.all())
+
+    class Meta:
+        model = Project
+        fields = ('user',)

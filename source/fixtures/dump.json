@@ -518,9 +518,9 @@
   "pk": 41,
   "fields": {
     "created_at": "2021-03-22T13:28:51.256Z",
-    "updated_at": "2021-03-22T13:33:58.857Z",
+    "updated_at": "2021-04-11T14:55:22.568Z",
     "summary": "Gringo",
-    "description": "American bizon",
+    "description": "American bizon killer",
     "status": 3,
     "project": 1,
     "issue_type": [
@@ -546,21 +546,6 @@
 },
 {
   "model": "tracker.issue",
-  "pk": 43,
-  "fields": {
-    "created_at": "2021-03-28T14:37:24.125Z",
-    "updated_at": "2021-03-28T14:37:24.125Z",
-    "summary": "SOS!!!!",
-    "description": "Спасите наши души!",
-    "status": 2,
-    "project": 1,
-    "issue_type": [
-      2
-    ]
-  }
-},
-{
-  "model": "tracker.issue",
   "pk": 44,
   "fields": {
     "created_at": "2021-03-29T08:07:16.636Z",
@@ -576,31 +561,31 @@
 },
 {
   "model": "tracker.issue",
-  "pk": 46,
+  "pk": 49,
   "fields": {
-    "created_at": "2021-03-29T12:21:57.582Z",
-    "updated_at": "2021-03-29T12:21:57.582Z",
-    "summary": "Mignolet",
-    "description": "Simone Goalkiper",
-    "status": 1,
-    "project": 1,
+    "created_at": "2021-04-01T10:24:04.095Z",
+    "updated_at": "2021-04-18T05:27:46.252Z",
+    "summary": "Medicine Aspirine GTA ViceCity",
+    "description": "Health. Ambulance",
+    "status": 2,
+    "project": 6,
     "issue_type": [
-      1
+      2
     ]
   }
 },
 {
   "model": "tracker.issue",
-  "pk": 49,
+  "pk": 51,
   "fields": {
-    "created_at": "2021-04-01T10:24:04.095Z",
-    "updated_at": "2021-04-03T11:00:19.516Z",
-    "summary": "Medicine Aspirine",
-    "description": "Health. Ambulance.",
-    "status": 2,
-    "project": 6,
+    "created_at": "2021-04-11T04:03:53.822Z",
+    "updated_at": "2021-04-11T04:13:31.055Z",
+    "summary": "English Premier Ligue Champions",
+    "description": "Английская премьер лига.",
+    "status": 1,
+    "project": 8,
     "issue_type": [
-      2
+      3
     ]
   }
 },
@@ -647,93 +632,48 @@
   }
 },
 {
-  "model": "tracker.project",
+  "model": "auth.group",
   "pk": 1,
   "fields": {
-    "start_date": "2021-03-29",
-    "end_date": null,
-    "name": "Test",
-    "description": ""
+    "name": "Project Manager",
+    "permissions": [
+      [
+        "add_project",
+        "tracker",
+        "project"
+      ],
+      [
+        "change_project",
+        "tracker",
+        "project"
+      ],
+      [
+        "delete_project",
+        "tracker",
+        "project"
+      ],
+      [
+        "view_project",
+        "tracker",
+        "project"
+      ]
+    ]
   }
 },
 {
-  "model": "tracker.project",
+  "model": "auth.group",
   "pk": 2,
   "fields": {
-    "start_date": "2021-03-01",
-    "end_date": null,
-    "name": "Travel",
-    "description": "Путешествия вокруг света"
+    "name": "Team Lead",
+    "permissions": []
   }
 },
 {
-  "model": "tracker.project",
+  "model": "auth.group",
   "pk": 3,
   "fields": {
-    "start_date": "2021-03-09",
-    "end_date": null,
-    "name": "Nature",
-    "description": "Природа"
-  }
-},
-{
-  "model": "tracker.project",
-  "pk": 4,
-  "fields": {
-    "start_date": "2021-03-28",
-    "end_date": "2021-04-28",
-    "name": "Experiment",
-    "description": "It's checking my Project Create View"
-  }
-},
-{
-  "model": "tracker.project",
-  "pk": 5,
-  "fields": {
-    "start_date": "2021-03-28",
-    "end_date": "2021-04-28",
-    "name": "Spider Many",
-    "description": "It's checking my Project Create View"
-  }
-},
-{
-  "model": "tracker.project",
-  "pk": 6,
-  "fields": {
-    "start_date": "2021-03-28",
-    "end_date": "2021-04-28",
-    "name": "Check function",
-    "description": "It's checking my Project Create View"
-  }
-},
-{
-  "model": "tracker.project",
-  "pk": 7,
-  "fields": {
-    "start_date": "2021-03-28",
-    "end_date": "2021-04-28",
-    "name": "Proverka",
-    "description": "It's checking my Project Create View"
-  }
-},
-{
-  "model": "tracker.project",
-  "pk": 8,
-  "fields": {
-    "start_date": "2021-03-01",
-    "end_date": null,
-    "name": "Sport",
-    "description": "Football"
-  }
-},
-{
-  "model": "tracker.project",
-  "pk": 9,
-  "fields": {
-    "start_date": "2021-03-29",
-    "end_date": null,
-    "name": "Cinematica",
-    "description": "FilmProductions"
+    "name": "Developer",
+    "permissions": []
   }
 },
 {
@@ -741,7 +681,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$PvXlAPrfzSZ4$LF1cQx3CN9ZsgGXGivC2AoRTvTJZjnUiFDmR9hypbOc=",
-    "last_login": "2021-04-08T12:22:28.775Z",
+    "last_login": "2021-04-18T11:54:39.964Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -752,6 +692,289 @@
     "date_joined": "2021-03-28T12:46:26.451Z",
     "groups": [],
     "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$q7KzEHH7wiqM$7cWKc2Unf/Su8DhXAxv7hoIfFMf0MtyzZd7DG34vpPo=",
+    "last_login": "2021-04-11T14:55:39.484Z",
+    "is_superuser": false,
+    "username": "gina",
+    "first_name": "Gina",
+    "last_name": "Diy",
+    "email": "gina_diy@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-11T14:54:44.265Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$v1Ht5OvNaNzf$TSgZ+k77JgYO/h68B5fotyyxZsABTct21bmmAzkBKUM=",
+    "last_login": "2021-04-18T11:43:25.173Z",
+    "is_superuser": false,
+    "username": "Dina",
+    "first_name": "Dina",
+    "last_name": "",
+    "email": "dina@dina.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-30T15:01:21Z",
+    "groups": [
+      [
+        "Project Manager"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$HvcsSaUQa1cS$6/H6odaeqA5gX8q8okDKVDPJHPKa1nycFTaqtESNte4=",
+    "last_login": "2021-04-11T15:49:58.035Z",
+    "is_superuser": false,
+    "username": "Komur",
+    "first_name": "",
+    "last_name": "Komur",
+    "email": "Kara-Keche@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-11T15:49:57.623Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$bf00eyBGnnBy$MyusUk8DYP+dANYHbiUMj47FqHQlhQtME5WGxyUWT28=",
+    "last_login": "2021-04-11T16:29:38.238Z",
+    "is_superuser": false,
+    "username": "golowa",
+    "first_name": "",
+    "last_name": "Bashka",
+    "email": "golova@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-11T16:29:37.907Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$zUZghGSKy6XQ$FK8nhbYIi/IqUTY1E2QM73SO2i8nQsahHlmTr41I0IM=",
+    "last_login": "2021-04-11T16:47:27.464Z",
+    "is_superuser": false,
+    "username": "Hello",
+    "first_name": "",
+    "last_name": "Djoconbo",
+    "email": "hell0@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-11T16:47:27.129Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$c5ZjKtr50RWp$m1N+lYu8KEdFRFgFahH5OBUR7/iT3TPlsY1qG77Ajkw=",
+    "last_login": "2021-04-12T03:27:00Z",
+    "is_superuser": false,
+    "username": "Figo",
+    "first_name": "Figo",
+    "last_name": "",
+    "email": "figo@figo.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-12T03:26:59Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$LcFmlpPdEQA2$06vFyI+i7RvlPdnk0IfgVib+VtyZ4er/vCIBxOiJdsU=",
+    "last_login": "2021-04-12T03:32:50Z",
+    "is_superuser": false,
+    "username": "Rex",
+    "first_name": "Rex",
+    "last_name": "",
+    "email": "rex@dogs.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-12T03:32:49Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$VxARnVEjontw$ExmopcHS/SclBqj7NBf8+1FWyynqEbpOqZbvDqQuYfw=",
+    "last_login": "2021-04-18T07:55:48.180Z",
+    "is_superuser": false,
+    "username": "ProjectManager",
+    "first_name": "Manager",
+    "last_name": "P",
+    "email": "p_manager@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-04-18T07:55:47.900Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 1,
+  "fields": {
+    "start_date": "2021-03-29",
+    "end_date": null,
+    "name": "Test",
+    "description": "",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 2,
+  "fields": {
+    "start_date": "2021-03-01",
+    "end_date": null,
+    "name": "Travel",
+    "description": "Путешествия вокруг света",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 3,
+  "fields": {
+    "start_date": "2021-03-09",
+    "end_date": null,
+    "name": "Nature",
+    "description": "Природа",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 4,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": "2021-04-28",
+    "name": "Experiment",
+    "description": "It's checking my Project Create View",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 5,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": "2021-04-28",
+    "name": "Spider Many",
+    "description": "It's checking my Project Create View",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 6,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": "2021-04-28",
+    "name": "Check function",
+    "description": "It's checking my Project Create View",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 7,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": "2021-04-28",
+    "name": "Proverka",
+    "description": "It's checking my Project Create View",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 8,
+  "fields": {
+    "start_date": "2021-03-01",
+    "end_date": null,
+    "name": "Sport",
+    "description": "Football",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 9,
+  "fields": {
+    "start_date": "2021-03-29",
+    "end_date": null,
+    "name": "Cinematica",
+    "description": "FilmProductions",
+    "user_id": []
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 11,
+  "fields": {
+    "start_date": "2021-04-17",
+    "end_date": null,
+    "name": "Dreams",
+    "description": "Just do it",
+    "user_id": [
+      [
+        "Dina"
+      ],
+      [
+        "Hello"
+      ],
+      [
+        "Figo"
+      ]
+    ]
+  }
+},
+{
+  "model": "tracker.project",
+  "pk": 12,
+  "fields": {
+    "start_date": "2021-03-28",
+    "end_date": null,
+    "name": "Car",
+    "description": "Toyota Avensis",
+    "user_id": [
+      [
+        "Dina"
+      ]
+    ]
   }
 }
 ]

@@ -3,6 +3,7 @@
 <body>
     {% block menu %}
     <li><a href="{% url 'tracker:issue-add' project.pk %}">Создать задачу</a></li>
+    <li><a href="{% url 'tracker:users-add' project.pk %}">Добавить пользователя</a></li>
     {% endblock %}
     {% block page_header %}Проект {{project.id}}{% endblock page_header %}
     {% block content %}

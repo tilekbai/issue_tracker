@@ -1,5 +1,5 @@
 from django.urls import path
-from tracker.views import IndexView, IssueView, Issue_updateView, Issue_deleteView, Issue_createView, ProjectView, ProjectsListView, ProjectCreateView, ProjectIssueCreateView, ProjectUpdateView, Project_deleteView
+from tracker.views import IndexView, IssueView, Issue_updateView, Issue_deleteView, Issue_createView, ProjectView, ProjectsListView, ProjectCreateView, ProjectIssueCreateView, ProjectUpdateView, Project_deleteView, Project_User_createView
 
 app_name = "tracker"
 
@@ -13,5 +13,7 @@ urlpatterns = [
     path('projects/list', ProjectsListView.as_view(), name="projects-list"),
     path('add_project/', ProjectCreateView.as_view(), name="project-add"),
     path('<int:pk>/updateproject', ProjectUpdateView.as_view(), name="project-update"),
-    path('<int:pk>/project_delete', Project_deleteView.as_view(), name="project-delete")
+    path('<int:pk>/project_delete', Project_deleteView.as_view(), name="project-delete"),
+    path('<int:pk>/project_user_add', Project_User_createView.as_view(), name="users-add"),
+    path('<int:pk>/project_user_delete', Project_User_createView.as_view(), name="users-delete")
 ]

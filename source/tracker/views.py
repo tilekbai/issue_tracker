@@ -183,7 +183,7 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'projects/project_update.html'
     form_class = ProjectForm
     context_object_name = 'project'
-    permission_required = 'project.change_project'
+    permission_required = 'tracker.change_project'
     
     def get_success_url(self):
         return reverse('tracker:project-view', kwargs={'pk': self.object.pk})

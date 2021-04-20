@@ -18,7 +18,7 @@ class Issue(BaseModel):
     description = models.CharField(max_length = 2000, null = True, blank=True, verbose_name = "Описание", validators=[MinLengthValidator(10)])
     status = models.ForeignKey("tracker.Status", on_delete=models.PROTECT, related_name="status", verbose_name="Статус", null=True, blank=True)
     issue_type = models.ManyToManyField("tracker.Issue_type", related_name="issue_type", blank=True)
-    project = models.ForeignKey("tracker.Project", on_delete=models.PROTECT, related_name="project", null=True, blank=True, default=1)
+    project = models.ForeignKey("tracker.Project", on_delete=models.CASCADE, related_name="project", null=True, blank=True, default=1)
 
     class Meta:
         db_table = "issues"

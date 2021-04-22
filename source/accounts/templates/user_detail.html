@@ -2,8 +2,8 @@
 {% block title %}Пользователь{% endblock %}
 
 {% block menu %}
-    <li><a href="{% url 'accounts:change' user_obj.pk %}">Редактировать</a></li>
-    <li><a href="#">Смена пароля</a></li>
+    <li><a href="{% url 'accounts:change' %}">Редактировать</a></li>
+    <li><a href="{% url 'accounts:password_change' %}">Смена пароля</a></li>
 {% endblock menu %}
 
 {% block content %}

@@ -3,13 +3,13 @@
 
 {% block menu %}
     <li><a href="{% url 'accounts:detail' user_obj.pk %}">Назад</a></li>
-    <li><a href="#">Смена пароля</a></li>
+    <li><a href="{% url 'accounts:password_change' %}">Смена пароля</a></li>
 {% endblock menu %}
 
 {% block content %}
     <h1>Поменять личные данные</h1>
     {% if not fields_only %}
-    <form action="{% url 'accounts:change' user_obj.pk %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'accounts:change' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
     {% endif %}
         {% include 'partial/form.html' with form=form fields_only=True %}

@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
 from tracker.models import Project
 from django.contrib.auth import get_user_model
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.views.generic import View, CreateView, UpdateView
 from django.views.generic import CreateView, DetailView, ListView
-from .forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm
+from .forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm, PasswordChangeForm
 from django.core.paginator import Paginator
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 
 
 
@@ -41,11 +42,14 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         return super().get_context_data(**kwargs) 
 
 
-class UserChangeView(UpdateView):
+class UserChangeView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = UserChangeForm
     template_name = "user_change.html"
     context_object_name = "user_obj"
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
     def get_context_data(self, **kwargs):
         if 'profile_form' not in kwargs:
@@ -80,3 +84,24 @@ class UserChangeView(UpdateView):
     def get_success_url(self):
         return reverse('accounts:detail', kwargs={'pk': self.object.pk})
         
+
+class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    template_name = 'user_password_change.html'
+    form_class = PasswordChangeForm
+    context_object_name = 'user_obj'
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse('accounts:login')
+
+    def form_valid(self, form):
+        user = form.save()
+        update_session_auth_hash(self.request, user)
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('accounts:detail', kwargs={'pk': self.object.pk})
+

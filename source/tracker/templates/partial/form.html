@@ -12,4 +12,7 @@
    <p {% if field.errors %} class="form-field-error"{% endif %}>{{ field }}</p>
     <br>
 {% endfor %}
+{% if not fields_only %}
 <p><input type="submit" value="{{ button_text }}"></p> 
+{% endif %}
+

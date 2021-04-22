@@ -2,6 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from tracker.models import Issue, Status, Issue_type, Project
+from django.contrib.auth import get_user_model
+
 
 
 class IssueForm(forms.ModelForm):
@@ -35,7 +37,7 @@ class SearchForm(forms.Form):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ('name', 'description', 'start_date', 'end_date', 'user_id')
+        fields = ('name', 'description', 'start_date', 'end_date')
 
     def clean(self):
         cleaned_data = super().clean()
@@ -49,8 +51,7 @@ class SearchProjectForm(forms.Form):
 
 
 class UsersListForm(forms.ModelForm):
-    user = forms.ModelMultipleChoiceField(required=False, widget=forms.CheckboxSelectMultiple, label="userlist", queryset=User.objects.all())
-
+    user_id = forms.ModelMultipleChoiceField(required=False, widget=forms.CheckboxSelectMultiple, label="Userlist", queryset=User.objects.all())
     class Meta:
         model = Project
-        fields = ('user',)
+        fields = ('user_id',)

@@ -53,7 +53,7 @@ class Issue_type(models.Model):
         return f'{self.issue_type_code}'     
 
 
-class Project(models.Model):
+class Project(models.Model):    
     start_date = models.DateField(auto_now=False)
     end_date = models.DateField(auto_now=False, null=True, blank=True)
     name = models.CharField(max_length=50)

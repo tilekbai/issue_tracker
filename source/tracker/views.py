@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models import Q
 from django.utils.http import urlencode
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.views.generic import View, TemplateView, RedirectView, FormView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from tracker.base_views import FormView as CustomFormView, CustomListView
 
@@ -50,22 +50,22 @@ class IndexView(ListView):
         return context
 
 
-class IssueView(TemplateView):
-    template_name = "issue_view.html"
-    
-    def get_context_data(self, **kwargs):
-        kwargs ["issue"] = get_object_or_404(Issue, id=kwargs.get("pk"))
-        return super().get_context_data(**kwargs)
+class IssueView(DetailView):
+    model = Issue
+    template_name = 'issue_view.html'
 
 
-class Issue_createView(LoginRequiredMixin, CustomFormView):
+class Issue_createView(PermissionRequiredMixin, CustomFormView):
     template_name = 'issue_create.html'
+    model = Issue   
     form_class = IssueForm
-    permission_required = 'webapp.add_task'
+    context_object_name = 'issue'
+    permission_required = 'tracker.add_issue'
 
     def has_permission(self):
-        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
-        return self.request.user in project.users.all() and super().has_permission()
+        issue = get_object_or_404(Issue, id=self.kwargs.get('pk'))
+        project = issue.project
+        return  self.request.user in project.user_id.all() and super().has_permission()
 
     def form_valid(self, form):
         data = {}
@@ -81,24 +81,33 @@ class Issue_createView(LoginRequiredMixin, CustomFormView):
         return reverse('tracker:issue-view', kwargs={'pk': self.issue.pk})
 
 
-class Issue_updateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):    
+class Issue_updateView(PermissionRequiredMixin, UpdateView):    
     model = Issue
     template_name = 'issue_update.html'
     form_class = IssueForm
     context_object_name = 'issue'
-    permission_required = 'issue.issue-update'
+    permission_required = 'tracker.change_issue'
+
+    def has_permission(self):
+        issue = get_object_or_404(Issue, id=self.kwargs.get('pk'))
+        project = issue.project
+        return  self.request.user in project.user_id.all() and super().has_permission()
 
     def get_success_url(self):
         return reverse('tracker:issue-view', kwargs={'pk': self.object.pk})
-        pk = self.kwargs.get('pk')
-        return get_object_or_404(Issue, pk=pk)
         
 
-class Issue_deleteView(LoginRequiredMixin, DeleteView):
+class Issue_deleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'issue_delete.html'
     model = Issue
     context_object_name = 'issue'
     success_url = reverse_lazy('tracker:issue-list')
+    permission_required = 'tracker.delete_issue'
+
+    def has_permission(self):
+        issue = get_object_or_404(Issue, id=self.kwargs.get('pk'))
+        project = issue.project
+        return  self.request.user in project.user_id.all() and super().has_permission()
 
 
 class ProjectView(DetailView):
@@ -150,6 +159,12 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
 
+    def form_valid(self, form):
+        project = form.save(commit = False)
+        project.save()
+        project.user_id.set([self.request.user])
+        return super().form_valid(form)
+    
     def get_success_url(self):
         return reverse('tracker:project-view', kwargs={'pk': self.object.pk})
 
@@ -197,7 +212,7 @@ class Project_deleteView(PermissionRequiredMixin, DeleteView):
     permission_required = 'tracker.delete_project'
 
 
-class Project_User_createView(PermissionRequiredMixin, UpdateView):
+class Project_Userlist_changeView(PermissionRequiredMixin, UpdateView):
     form_class = UsersListForm
     model = Project
     template_name = "projects/project_user_create.html"
@@ -209,8 +224,7 @@ class Project_User_createView(PermissionRequiredMixin, UpdateView):
         return self.request.user in project.user_id.all() and super().has_permission()
 
     def form_valid(self, form):
-        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
-        users = form.save()
+        user_id = form.save()
         return super().form_valid(form)
     
     def get_success_url(self):
